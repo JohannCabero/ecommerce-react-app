@@ -2,18 +2,34 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #navbar {
-  background-image: linear-gradient(45deg, rgba(60,60,60,1) 0%, rgba(167,167,167,1) 100%);
+  background-image: linear-gradient(48deg, rgba(48,70,116,1) 0%, rgba(59,82,133,1) 45%, rgba(112,143,207,1) 100%);
+}
+
+.navbar-text {
+  font-weight: 500 !important;
 }
 
 
 /* Phone Screens */
 @media (max-width: 600px){
 
-  #home h1 {
-    font-size: 1.65rem;
+  #home-row-1 {
+    max-height: 65vh;
+    min-height: 65vh;
+    text-align: center;
+  }
+
+  .home-banner {
+    max-height: 30vh;
+    min-height: 30vh;
+  }
+
+  #featured-btn {
+    text-align: center;
   }
 
   #create-prod-col {
@@ -22,47 +38,50 @@
   }
 
   #cart {
-    background-image: url('./images/Cart-Background.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: left;
+    background-color: #007bff !important;
   }
 }
 
 /* Landscape Tablet Screens */
 @media (min-width: 768px){
 
-  #home h1 {
-    font-size: 2.75rem;
+  #home-row-1 {
+    max-height: 60vh;
+    min-height: 60vh;
   }
 
-  .reg-log-img {
-    max-height: 55vh;
-    min-width: 100vw;
+  .home-banner {
+    max-height: 30vh;
+    min-height: 30vh;
   }
 
-  #cart-side1 {
-    background-image: url('./images/Cart-Background.jpg');
+  .highlight {
+    min-height: 100%;
+  }
+
+  .reg-log-img-col {
+    background-image: url('./images/Register-Login-Background.jpg');
+    background-repeat: repeat-y;
+    max-height: 40vh;
+    min-height: 40vh;
     background-size: cover;
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: right;
+    background-position: top left;
   }
 
-  #cart-side2 {
-    background-image: url('./images/Cart-Background.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
 }
 
 /* Laptop Screens */
 @media (min-width: 992px){
-  #home h1 {
-    font-size: 3.5rem;
+  
+  #home-row-1 {
+    max-height: 65vh;
+    min-height: 65vh;
+  }
+
+  .home-banner {
+    max-height: 40vh;
+    min-height: 40vh;
   }
 
   .reg-log-img {
@@ -70,35 +89,34 @@
     min-width: 100%;
   }
 
-  #cart-side1 {
-    background-image: url('./images/Cart-Background.jpg');
-    background-size: cover;
-    background-attachment: fixed;
+  .reg-log-img-col {
+    background-image: url('./images/Register-Login-Background.jpg');
     background-repeat: no-repeat;
-    background-position: right top;
+    background-size: 60% 100%;
+    max-height: 100%;
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: right;
   }
 
-  #cart-side2 {
-    background-image: url('./images/Cart-Background.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: left top;
-  }
 }
 
-#home {
-  background-image: url('./images/Home-Background.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+.title-bold {
+  font-weight: 800 !important;
 }
 
-#home h1 {
-  display: grid;
-  align-items: center;
-  background-color: rgba(0,0,0,0.3);
-  height: 20vh;
+.page-headers {
+  font-weight: 700 !important;
+}
+
+.shop-btn {
+  background-color: rgba(48,70,116) !important;
+  border-color: rgba(0,0,0,0) !important;
+}
+
+#home-row-3 {
+  max-height: 45vh;
+  min-height: 45vh;
 }
 
 #products-table {
@@ -119,12 +137,3 @@
 .accordion-button:not(.collapsed) {
   color: #212529;
 }
-
-/*.accordion-button:hover, .accordion-button:not(.collapsed), .accordion-button:focus, .accordion-button:link, .accordion-button:active, .accordion-button:visited {
-  background-color: #5500C9 !important;
-      color:#FFF !important;
-      text-decoration: none !important;
-       border: hidden !important;
-         border-color: #FFF !important;
-      box-shadow: 0px !important;
-}*/

@@ -66,7 +66,7 @@ export default function AdminView({ ordersData, userIdArr, fetchOrders }){
 
 	return (
 		<Container fluid className="p-0">
-			<h1 className="my-4 text-center">All Orders</h1>
+			<h1 className="my-4 text-center page-headers">All Orders</h1>
 			<Row className="bg-secondary min-vh-100 p-5">
 			<Col>
 				<Accordion>

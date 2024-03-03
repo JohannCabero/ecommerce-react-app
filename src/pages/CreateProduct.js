@@ -89,7 +89,7 @@ export default function CreateProduct(){
 				<Col className="bg-success d-none d-md-block" lg={2}>
 				</Col>
 				<Col className="px-5" id="create-prod-col" lg={8}>
-					<h1 className="my-5 text-center">Create Product</h1>
+					<h1 className="my-5 text-center page-headers">Create Product</h1>
 					<Form onSubmit={e => createProduct(e)}>
 						<Form.Group className="my-3">
 							<Form.Label>Name:</Form.Label>

@@ -10,6 +10,8 @@ export default function Products(){
 	const { user } = useContext(UserContext);
 
 	const [ products, setProducts ] = useState([]);
+	const [ checkProducts, setCheckProducts ] = useState(false);
+	const [ checkProductsCount, setCheckProductsCount ] = useState(0);
 
 	const fetchData = () => {
 
@@ -22,30 +24,34 @@ export default function Products(){
 		})
 		.then(res => res.json())
 		.then(data => {
+
 			if(typeof data.message !== 'string'){
 				setProducts(data.products);
 			} else {
 				setProducts([]);
+			}
+
+			if(checkProductsCount < 5){
+				setCheckProducts(true);
+				setCheckProductsCount(checkProductsCount + 1);
+			} else {
+				setCheckProducts(false);
 			}
 		});
 	}
 
 	useEffect(() => {
 		fetchData();
-	}, [products])
+	}, [checkProducts ? products : null])
 
 	return (
 		<>
-			{(user.id !== null) ?
-
-				(user.isAdmin) ?
-					<AdminView productsData={products} fetchData={fetchData} />
-				:
-					<UserView productsData={products} />
-
+		{
+			(user.isAdmin) ?
+				<AdminView productsData={products} fetchData={fetchData} />
 			:
-				<Navigate to="/users/login" />
-			}
+				<UserView productsData={products} />
+		}
 		</>
 	);
 }

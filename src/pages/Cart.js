@@ -173,11 +173,14 @@ export default function Cart(){
 		(!user.isAdmin) ?
 		<Container fluid className="text-center min-vh-100 g-0">
 			<Row className="min-vh-100">
-				<Col className="d-none d-md-block" id="cart-side1" lg={2}></Col>
-				<Col className="bg-secondary px-4" id="cart"> 
-					<h1 className="my-4 text-white">My Cart</h1>
+				<Col className="bg-primary d-none d-md-block" lg={2}></Col>
+				<Col className="d-md-none">
+					<h1 className="mt-4 page-headers">My Cart</h1>
+				</Col>
+				<Col className="px-3" id="cart" lg={8}> 
+					<h1 className="my-4 page-headers d-none d-md-block">My Cart</h1>
 
-					<Table striped bordered hover responsive className="mt-4 mb-5 align-middle" variant="dark">
+					<Table striped bordered hover responsive className="mt-5 mt-md-4 mb-5 align-middle" variant="dark">
 						<thead>
 							<tr className="text-center">
 								<th>Product</th>
@@ -217,7 +220,7 @@ export default function Cart(){
 						</tfoot>
 					</Table>
 				</Col>
-				<Col className="d-none d-md-block" id="cart-side2" lg={2}></Col>
+				<Col className="d-none d-md-block bg-primary" lg={2}></Col>
 			</Row>
 		</Container>
 		:

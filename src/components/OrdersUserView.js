@@ -7,13 +7,13 @@ export default function UserView({ orders }) {
 
     return (
         <Container fluid className="p-0">
-        	<h1 className="my-4 text-center">My Orders</h1>
+        	<h1 className="my-4 text-center page-headers">My Orders</h1>
         	<Row className="bg-primary min-vh-100 p-5">
         		<Col>
 		            <Accordion>
 		            {orders.map((order, index) => (
 		                <Accordion.Item eventKey={order._id}>
-		                <Accordion.Header>Order ID: {order._id}</Accordion.Header>
+		                <Accordion.Header className="text-truncate">Order ID: {order._id}</Accordion.Header>
 			                <Accordion.Body>
 			                	<p>Ordered On: {new Date(order.orderedOn).toLocaleString()}</p>
 			                    {order.productsOrdered.map((product, productIndex) => (

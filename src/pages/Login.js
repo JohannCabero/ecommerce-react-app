@@ -1,7 +1,7 @@
 // Dependencies and Modules
 import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 import background from '../images/Register-Login-Background.jpg';
@@ -104,20 +104,22 @@ const Login = () => {
 							<Form.Label>Password</Form.Label>
 							<Form.Control
 								type="password"
-								placeholder="Password"
+								placeholder="Enter Password"
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
 								required
 							/>
 						</Form.Group>
 
+						<p>Don't have an account? <Link className="text-white" to="/users/register">Register Here</Link></p>
+
 						<Button variant="success" type="submit" id="submitBtn" disabled={!isActive}>
 						Submit
 						</Button>
 					</Form>
 				</Col>
-				<Col lg={7} className="g-0 d-none d-sm-block">
-					<img src={background} className="img-fluid reg-log-img" />
+				<Col lg={7} className="g-0 d-none d-sm-block reg-log-img-col">
+					{/*<img src={background} className="img-fluid reg-log-img d-lg-none" />*/}
 				</Col>
 			</Row>
 	);

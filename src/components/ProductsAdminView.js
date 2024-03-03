@@ -34,7 +34,7 @@ export default function AdminView({ productsData, fetchData }){
 	return (
 		<>
 		<Container fluid className="text-center g-0">
-			<h1 className="my-4">Admin Dashboard</h1>
+			<h1 className="my-4 page-headers">Admin Dashboard</h1>
 
 			<Row className="bg-primary">
 				<span className="mt-3"><Link to="/products/createProduct" className="btn btn-success">Create Product</Link></span>

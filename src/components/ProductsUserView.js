@@ -36,10 +36,16 @@ export default function UserView({ productsData }){
 
 	return (
 		<>
-		<Row className="bg-success">
+		<Row className="bg-primary px-md-4">
 			<Col className="p-4 min-vh-100" id="product-header">
-				<h1 className="text-center text-light mb-4">Products</h1>
-				{ products }
+				<h1 className="text-center text-light mb-4 page-headers">Our Products</h1>
+				{(products.length > 0) ?
+					<>
+					{ products }
+					</>
+				:
+					<h3 className="text-white mt-5">Sorry, there are no products available...</h3>
+				}
 			</Col>
 		</Row>
 		</>

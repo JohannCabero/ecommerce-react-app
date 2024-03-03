@@ -1,9 +1,13 @@
 // Dependencies and Modules
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import UserContext from '../UserContext.js';
 
 export default function ProductView({ product }){
+
+	const { user } = useContext(UserContext);
 
 	const [ productId, setProductId ] = useState('');
 	const [ name, setName ] = useState('');
@@ -95,7 +99,7 @@ export default function ProductView({ product }){
 
 	return (
 		<>
-			<Button variant="primary" size="sm" onClick={() => openDetails(product)}> Details </Button>
+			<Button className="shop-btn" size="sm" onClick={() => openDetails(product)}> Details </Button>
 
             <Modal show={showDetails} onHide={closeDetails}>
         	<Form onSubmit={e => addToCart(e, productId)}>
@@ -110,6 +114,8 @@ export default function ProductView({ product }){
 					<p>PhP {price}</p>						
 				</Modal.Body>
 				<Modal.Footer>
+					{user.id !== null ?
+					<>
 					<Form.Group controlId="quantity" className="d-inline me-auto">
 						<Form.Label className="d-inline fw-bold">Quantity: </Form.Label> 
 						<Form.Control
@@ -123,6 +129,10 @@ export default function ProductView({ product }){
 							/>
 				    </Form.Group>
 					<Button variant="success" type="submit" className="d-inline me-auto me-md-0" disabled={!isActive}>Add to Cart</Button>
+					</>
+					:
+					<Link to="/users/login"><Button variant="success">Login to Order</Button></Link>
+					}
 				    <Button variant="secondary" className="d-inline" onClick={closeDetails}>Close</Button>	
 				</Modal.Footer>
 		    </Form>

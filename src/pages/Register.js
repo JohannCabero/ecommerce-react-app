@@ -101,7 +101,7 @@ export default function Register(){
 			<Navigate to="/products" />
 		:
 		<Row className="min-vh-100">
-			<Col xs={12} md={{ order: 'last' }} lg={{ span: 5, order: 'first' }} className="bg-success px-5 g-0 text-white">
+			<Col xs={12} md={{ order: 'last' }} lg={{ span: 5, order: 'first' }} className="bg-primary px-5 g-0 text-white">
 				<Form onSubmit={(e) => registerUser(e)} className="mb-5">
 				<h1 className="my-5 text-center">Register</h1>
 					<Form.Group className="my-3">
@@ -164,16 +164,15 @@ export default function Register(){
 						onChange={e => {setConfirmPassword(e.target.value)}}
 						/>
 					</Form.Group>
-					{/*conditionally render submit button based on isActive state, the current state of the isActive is false*/}
 					{ isActive ?
-					<Button variant="primary" type="submit">Submit</Button>
+					<Button variant="success" type="submit">Submit</Button>
 					:
-					<Button variant="primary" type="submit" disabled>Submit</Button>
+					<Button variant="success" type="submit" disabled>Submit</Button>
 					}
 				</Form>
 			</Col>
-			<Col lg={7} className="g-0 d-none d-sm-block">
-				<img src={background} className="img-fluid reg-log-img" />
+			<Col lg={7} className="g-0 d-none d-sm-block reg-log-img-col">
+				{/*<img src={background} className="img-fluid reg-log-img d-lg-none" />*/}
 			</Col>
 		</Row>	
 	);
