@@ -28,6 +28,10 @@
     min-height: 30vh;
   }
 
+  .highlight-title {
+    text-align: center !important;
+  }
+
   #featured-btn {
     text-align: center;
   }
@@ -45,10 +49,10 @@
 /* Landscape Tablet Screens */
 @media (min-width: 768px){
 
-  #home-row-1 {
+/*  #home-row-1 {
     max-height: 60vh;
     min-height: 60vh;
-  }
+  }*/
 
   .home-banner {
     max-height: 30vh;
@@ -74,14 +78,14 @@
 /* Laptop Screens */
 @media (min-width: 992px){
   
-  #home-row-1 {
+/*  #home-row-1 {
     max-height: 65vh;
     min-height: 65vh;
-  }
+  }*/
 
   .home-banner {
-    max-height: 40vh;
-    min-height: 40vh;
+    max-height: 200px;
+    min-height: 200px;
   }
 
   .reg-log-img {
@@ -105,10 +109,6 @@
   font-weight: 800 !important;
 }
 
-.page-headers {
-  font-weight: 700 !important;
-}
-
 .shop-btn {
   background-color: rgba(48,70,116) !important;
   border-color: rgba(0,0,0,0) !important;
@@ -117,6 +117,14 @@
 #home-row-3 {
   max-height: 45vh;
   min-height: 45vh;
+}
+
+.highlight-title {
+  font-weight: 600 !important;
+}
+
+.page-headers {
+  font-weight: 700 !important;
 }
 
 #products-table {
