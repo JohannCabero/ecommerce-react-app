@@ -89,7 +89,7 @@ export default function UpdateItemQuantity({ item, product, fetchCart }){
 				<h5>Description:</h5>
 				<p>{description}</p>
 				<h5>Price:</h5>
-				<p>PhP {price}</p>						
+				<p>&#8369; {price}</p>						
 			</Modal.Body>
 			<Modal.Footer>
 				<Form.Group as={Row} controlId="quantity" className="d-inline me-auto">

@@ -11,7 +11,7 @@ export default function FeaturedProducts(){
 		fetch(`${process.env.REACT_APP_API_BASE_URL}/products/`)
 		.then(res => res.json())
 		.then(data => {
-			console.log(data)
+
 			if(typeof data.message !== 'string'){
 				const numbers = [];
 				const featured = [];
@@ -48,7 +48,7 @@ export default function FeaturedProducts(){
 								<Card.Subtitle>Description:</Card.Subtitle>
 								<Card.Text>{ description }</Card.Text>
 								<Card.Subtitle>Price:</Card.Subtitle>
-								<Card.Text>{ price }</Card.Text>
+								<Card.Text>&#8369; { price }</Card.Text>
 							</Card.Body>
 						</Card>
 					);

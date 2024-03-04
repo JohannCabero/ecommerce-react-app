@@ -21,7 +21,7 @@ export default function UserView({ productsData }){
 							<Card.Subtitle>Description:</Card.Subtitle>
 							<Card.Text>{ description }</Card.Text>
 							<Card.Subtitle>Price:</Card.Subtitle>
-							<Card.Text>{ price }</Card.Text>
+							<Card.Text>&#8369; { price }</Card.Text>
 							<ProductView product={_id} />
 						</Card.Body>
 					</Card>

@@ -10,6 +10,7 @@ export default function Orders(){
 	const { user } = useContext(UserContext);
 
 	const [ orders, setOrders ] = useState([]);
+	const [ products, setProducts ] = useState([]);
 
 	const [ checkOrders, setCheckOrders ] = useState(false);
 	const [ checkOrdersCount, setCheckOrdersCount ] = useState(0);
@@ -18,15 +19,16 @@ export default function Orders(){
 
 	const fetchOrders = () => {
 
-		let fetchUrl = user.isAdmin ? `${process.env.REACT_APP_API_BASE_URL}/orders/all-orders` : `${process.env.REACT_APP_API_BASE_URL}/orders/my-orders`;
+		let fetchOrdersUrl = user.isAdmin ? `${process.env.REACT_APP_API_BASE_URL}/orders/all-orders` : `${process.env.REACT_APP_API_BASE_URL}/orders/my-orders`;
 
-		fetch(fetchUrl, {
+		fetch(fetchOrdersUrl, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`
 			}
 		})
 		.then(res => res.json())
 		.then(data => {
+
 			if(typeof data.message !== 'string'){
 				setOrders(data.orders);
 
@@ -38,20 +40,33 @@ export default function Orders(){
 				});
 
 				setUserIdArr(userIds);
-				setCheckOrders(true);
 
 			} else {
 				setOrders([]);
-				setCheckOrders(false);
 			}
 
-			if(checkOrdersCount < 5){
-				setCheckOrdersCount(checkOrdersCount + 1);
+			if(checkOrdersCount < 3){
 				setCheckOrders(true);
+				setCheckOrdersCount(checkOrdersCount + 1);
 			} else {
 				setCheckOrders(false);
 			}
 		});
+
+		fetch(`${process.env.REACT_APP_API_BASE_URL}/products/all`, {
+			headers: {
+				Authorization: `Bearer ${process.env.REACT_APP_ADMIN_TOKEN}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			if(typeof data.message !== 'string'){
+				setProducts(data.products);
+			} else {
+				setProducts([]);
+			}
+		});
+
 	}
 
 	useEffect(() => {
@@ -63,9 +78,9 @@ export default function Orders(){
 			{(user.id !== null) ?
 
 				user.isAdmin ?
-					<AdminView ordersData={orders} userIdArr={userIdArr} fetchOrders={fetchOrders} />
+					<AdminView ordersData={orders} productsData={products} userIdArr={userIdArr} />
 				:
-					<UserView orders={orders} />
+					<UserView ordersData={orders} productsData={products} />
 
 			:
 				<Navigate to="/users/login" />

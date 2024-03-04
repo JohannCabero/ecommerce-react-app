@@ -111,27 +111,27 @@ export default function ProductView({ product }){
 					<h5>Description:</h5>
 					<p>{description}</p>
 					<h5>Price:</h5>
-					<p>PhP {price}</p>						
+					<p>&#8369; {price}</p>						
 				</Modal.Body>
 				<Modal.Footer>
 					{user.id !== null ?
-					<>
-					<Form.Group controlId="quantity" className="d-inline me-auto">
-						<Form.Label className="d-inline fw-bold">Quantity: </Form.Label> 
-						<Form.Control
-							className="d-inline"
-							size="sm"
-							className="d-inline w-25 me-auto"
-							type="number"
-							required
-							value={quantity}
-							onChange={e => setQuantity(e.target.value >= 0 ? e.target.value : 0)}
-							/>
-				    </Form.Group>
-					<Button variant="success" type="submit" className="d-inline me-auto me-md-0" disabled={!isActive}>Add to Cart</Button>
-					</>
+						<>
+						<Form.Group controlId="quantity" className="d-inline me-auto">
+							<Form.Label className="d-inline fw-bold">Quantity: </Form.Label> 
+							<Form.Control
+								className="d-inline"
+								size="sm"
+								className="d-inline w-25 me-auto"
+								type="number"
+								required
+								value={quantity}
+								onChange={e => setQuantity(e.target.value >= 0 ? e.target.value : 0)}
+								/>
+					    </Form.Group>
+						<Button variant="success" type="submit" className="d-inline me-auto me-md-0" disabled={!isActive}>Add to Cart</Button>
+						</>
 					:
-					<Link to="/users/login"><Button variant="success">Login to Order</Button></Link>
+						<Link to="/users/login"><Button variant="success">Login to Order</Button></Link>
 					}
 				    <Button variant="secondary" className="d-inline" onClick={closeDetails}>Close</Button>	
 				</Modal.Footer>

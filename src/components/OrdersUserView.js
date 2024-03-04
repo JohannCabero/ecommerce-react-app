@@ -1,9 +1,51 @@
 // Dependencies and Modules
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Accordion, Container, Row, Col } from 'react-bootstrap';
 
-export default function UserView({ orders }) {
-    const [activeIndex, setActiveIndex] = useState(null);
+export default function UserView({ ordersData, productsData }) {
+    
+    const [ orders, setOrders ] = useState([]);
+    const [ activeIndex, setActiveIndex ] = useState(null);
+
+    useEffect(() => {
+    	const ordersArr = ordersData.map((order, index) => {
+    		return (
+            <Accordion.Item eventKey={order._id}>
+            <Accordion.Header className="text-truncate">Order ID: {order._id}</Accordion.Header>
+                <Accordion.Body>
+                	<p>Ordered On: {new Date(order.orderedOn).toLocaleString()}</p>
+                    {productsData.filter(product => {
+							return order.productsOrdered.some(item => item.productId === product._id)
+						}).map(product => {
+							const { _id, name, description, price } = product;
+
+							const item = order.productsOrdered.find(item => item.productId === _id);
+
+							const quantity = item.quantity;
+							const subtotal = item.subtotal;
+							const itemId = item._id;
+
+                    	return (
+                        <ul key={itemId}>
+	                        <li key={_id}>Product: {name}
+		                        <ul>
+		                        	<li>Price: &#8369; {price}</li>
+		                        	<li>Quantity: {quantity}</li>
+		                        	<li>Subtotal: &#8369; {subtotal}</li>
+		                        </ul>
+	                        </li>
+                        </ul>
+                    	)
+                    })}
+                    <p>Total Price: &#8369; {order.totalPrice}</p>
+                </Accordion.Body>
+        	</Accordion.Item>
+       		);
+	    });
+
+    	setOrders(ordersArr);
+
+    }, [ordersData]);
 
     return (
         <Container fluid className="p-0">
@@ -11,25 +53,7 @@ export default function UserView({ orders }) {
         	<Row className="bg-primary min-vh-100 p-5">
         		<Col>
 		            <Accordion>
-		            {orders.map((order, index) => (
-		                <Accordion.Item eventKey={order._id}>
-		                <Accordion.Header className="text-truncate">Order ID: {order._id}</Accordion.Header>
-			                <Accordion.Body>
-			                	<p>Ordered On: {new Date(order.orderedOn).toLocaleString()}</p>
-			                    {order.productsOrdered.map((product, productIndex) => (
-			                        <ul key={productIndex}>
-				                        <li>Product ID: {product.productId}
-					                        <ul>
-					                        	<li>Quantity: {product.quantity}</li>
-					                        	<li>Subtotal: {product.subtotal}</li>
-					                        </ul>
-				                        </li>
-			                        </ul>
-			                    ))}
-			                    <p>Total Price: {order.totalPrice}</p>
-			                </Accordion.Body>
-		            	</Accordion.Item>
-		            ))}
+		            	{ orders }
 		        	</Accordion>
         		</Col>
         	</Row>

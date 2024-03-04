@@ -107,7 +107,7 @@ export default function Cart(){
 				setCheckCart(false);
 			}
 
-			if(checkCount < 5){
+			if(checkCount < 3){
 				setCheckCount(checkCount + 1);
 				setCheckCart(true);
 			} else {
@@ -142,9 +142,9 @@ export default function Cart(){
 							<tr key={itemId}>
 								<td>{ name }</td>
 								<td>{ description }</td>
-								<td>{ price }</td>
+								<td>&#8369; { price }</td>
 								<td>{ quantity }</td>
-								<td>{ subtotal }</td>
+								<td>&#8369; { subtotal }</td>
 								<td className="text-center">
 									<Button variant="danger" size="sm" onClick={() => removeFromCart(_id)}>Remove Item</Button>
 								</td>
@@ -208,7 +208,7 @@ export default function Cart(){
 						<tfoot>
 							<tr>
 								<td colSpan="5">
-									<strong>Total Price: </strong> {cart.totalPrice ? cart.totalPrice : 0}
+									<strong>Total Price:</strong> &#8369; {cart.totalPrice ? cart.totalPrice : 0}
 								</td>
 								<td>
 									<Checkout isCartEmpty={items.length <= 0} fetchCart={fetchCart} />

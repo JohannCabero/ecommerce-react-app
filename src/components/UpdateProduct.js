@@ -99,7 +99,7 @@ export default function UpdateProduct({ product, fetchData }){
                             	onChange={e => setName(e.target.value)}
                             	/>
                         </Form.Group>
-                        <Form.Group controlId="productDescription">
+                        <Form.Group controlId="productDescription" className="mt-2">
                             <Form.Label>Description</Form.Label>
                             <Form.Control 
                             	type="text" 
@@ -108,7 +108,7 @@ export default function UpdateProduct({ product, fetchData }){
                             	onChange={e => setDescription(e.target.value)}
                             	/>
                         </Form.Group>
-                        <Form.Group controlId="productPrice">
+                        <Form.Group controlId="productPrice" className="mt-2">
                             <Form.Label>Price</Form.Label>
                             <Form.Control 
                             	type="number" 
@@ -119,8 +119,8 @@ export default function UpdateProduct({ product, fetchData }){
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={closeUpdate}>Close</Button>
                         <Button variant="success" type="submit" disabled={!isActive}>Submit</Button>
+                        <Button variant="secondary" onClick={closeUpdate}>Close</Button>
                     </Modal.Footer>
                 </Form>
             </Modal>

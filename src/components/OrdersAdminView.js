@@ -2,12 +2,9 @@
 import { Accordion, Col, Row, Container } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
-export default function AdminView({ ordersData, userIdArr, fetchOrders }){
+export default function AdminView({ ordersData, productsData, userIdArr }){
 
 	const [ orders, setOrders ] = useState([]);
-
-	const [ checkOrders, setCheckOrders ] = useState(false);
-	const [ checkOrdersCount, setCheckOrdersCount ] = useState(0);
 
 	useEffect(() => {
 
@@ -24,24 +21,30 @@ export default function AdminView({ ordersData, userIdArr, fetchOrders }){
 						<p>Items:</p>
 						<ul>
 						{
-						order.productsOrdered.map(item => {
+						productsData.filter(product => {
+							return order.productsOrdered.some(item => item.productId === product._id)
+						}).map(product => {
+							const { _id, name, description, price } = product;
+
+							const item = order.productsOrdered.find(item => item.productId === _id);
 
 							const quantity = item.quantity;
 							const subtotal = item.subtotal;
 							const itemId = item._id;
 
 							return (
-								<li className="my-2">{itemId}
+								<li className="my-2" key={_id}>{name}
 									<ul>
+										<li>Price: &#8369; {price}</li>
 										<li>Quantity: {quantity}</li>
-										<li>Subtotal: {subtotal}</li>
+										<li>Subtotal: &#8369; {subtotal}</li>
 									</ul>
 								</li>
 							);
 						})
 						}
 						</ul>
-						<p>Total: {order.totalPrice}</p>
+						<p>Total: &#8369; {order.totalPrice}</p>
 						<hr />
 					</Accordion.Body>
 					);
@@ -55,13 +58,6 @@ export default function AdminView({ ordersData, userIdArr, fetchOrders }){
 
 		setOrders(ordersArr);
 
-		if(checkOrdersCount < 5){
-			setCheckOrdersCount(checkOrdersCount + 1);
-			setCheckOrders(true);
-		} else {
-			setCheckOrders(false);
-		}
-
 	}, [ordersData]);
 
 	return (
@@ -70,7 +66,7 @@ export default function AdminView({ ordersData, userIdArr, fetchOrders }){
 			<Row className="bg-secondary min-vh-100 p-5">
 			<Col>
 				<Accordion>
-					{orders}
+					{ orders }
 				</Accordion>
 				</Col>
 			</Row>
