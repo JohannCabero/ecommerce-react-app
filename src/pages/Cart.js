@@ -172,11 +172,9 @@ export default function Cart(){
 
 		(!user.isAdmin) ?
 		<Container fluid className="text-center min-vh-100 g-0">
+			<h1 className="my-4 page-headers d-md-none">My Cart</h1>
 			<Row className="min-vh-100">
 				<Col className="bg-primary d-none d-md-block" lg={2}></Col>
-				<Col className="d-md-none">
-					<h1 className="mt-4 page-headers">My Cart</h1>
-				</Col>
 				<Col className="px-3" id="cart" lg={8}> 
 					<h1 className="my-4 page-headers d-none d-md-block">My Cart</h1>
 
