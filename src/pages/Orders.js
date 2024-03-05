@@ -33,15 +33,9 @@ export default function Orders(){
 			if(typeof data.message !== 'string'){
 				setOrders(data.orders);
 
-				const userIds = [];
-				data.orders.forEach(order => {
-					if(!userIds.includes(order.userId)){
-						userIds.push(order.userId);
-					}
-				});
-
+				const userIds = data.orders.map(order => order.userId);
 				setUserIdArr(userIds);
-
+				
 			} else {
 				setOrders([]);
 			}
