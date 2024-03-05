@@ -11,6 +11,7 @@ export default function Orders(){
 
 	const [ orders, setOrders ] = useState([]);
 	const [ products, setProducts ] = useState([]);
+	const [ users, setUsers ] = useState([]);
 
 	const [ checkOrders, setCheckOrders ] = useState(false);
 	const [ checkOrdersCount, setCheckOrdersCount ] = useState(0);
@@ -67,6 +68,22 @@ export default function Orders(){
 			}
 		});
 
+		if(user.isAdmin){
+			fetch(`${process.env.REACT_APP_API_BASE_URL}/users/all`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem('token')}`
+				}
+			})
+			.then(res => res.json())
+			.then(data => {
+				if(typeof data.message !== 'string'){
+					setUsers(data.users);
+				} else {
+					setUsers([]);
+				}
+			});
+		}
+
 	}
 
 	useEffect(() => {
@@ -78,7 +95,7 @@ export default function Orders(){
 			{(user.id !== null) ?
 
 				user.isAdmin ?
-					<AdminView ordersData={orders} productsData={products} userIdArr={userIdArr} />
+					<AdminView ordersData={orders} productsData={products} usersData={users} userIdArr={userIdArr} />
 				:
 					<UserView ordersData={orders} productsData={products} />
 

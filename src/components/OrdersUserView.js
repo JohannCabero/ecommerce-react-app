@@ -11,7 +11,7 @@ export default function UserView({ ordersData, productsData }) {
     	const ordersArr = ordersData.map((order, index) => {
     		return (
             <Accordion.Item eventKey={order._id}>
-            <Accordion.Header className="text-truncate">Order ID: {order._id}</Accordion.Header>
+            <Accordion.Header className="text-break">Order ID: {order._id}</Accordion.Header>
                 <Accordion.Body>
                 	<p>Ordered On: {new Date(order.orderedOn).toLocaleString()}</p>
                     {productsData.filter(product => {
@@ -50,7 +50,7 @@ export default function UserView({ ordersData, productsData }) {
     return (
         <Container fluid className="p-0">
         	<h1 className="my-4 text-center page-headers">My Orders</h1>
-        	<Row className="bg-primary min-vh-100 p-5">
+        	<Row className="bg-primary min-vh-100 py-5 px-3 px-md-5">
         		<Col>
 		            <Accordion>
 		            	{ orders }
